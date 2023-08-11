@@ -1,6 +1,23 @@
 import { Box, Container, IconButton, Tooltip } from "@mui/material";
 import { ForwardToInbox, GitHub, PhoneInTalk } from "@mui/icons-material";
 const titles = ["الشروط والأحكام", "سياسية الخصوصية", "اتصل بنا"];
+const socialIcons = [
+    {
+        title: "My Phone",
+        href: "tel:+963998630508",
+        icon: <PhoneInTalk />,
+    },
+    {
+        title: "My GitHub",
+        href: "https://github.com/Hadeel-13",
+        icon: <GitHub />,
+    },
+    {
+        title: "My Email",
+        href: "mailto:mira13ha@gmail.com",
+        icon: <ForwardToInbox />,
+    },
+];
 export default function Footer() {
     return (
         <>
@@ -18,48 +35,22 @@ export default function Footer() {
                             ))}
                         </div>
                         <div className="flex justify-between items-center">
-                            <Tooltip title="My Phone">
-                                <a
-                                    href="tel:+963998630508"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                >
-                                    <IconButton
-                                        color="inherit"
-                                        aria-label="add to shopping cart"
+                            {socialIcons?.map((_) => (
+                                <Tooltip key={_.href} title={_.title}>
+                                    <a
+                                        href={_.href}
+                                        target="_blank"
+                                        rel="noreferrer"
                                     >
-                                        <PhoneInTalk />
-                                    </IconButton>
-                                </a>
-                            </Tooltip>
-                            <Tooltip title="My GitHub">
-                                <a
-                                    href="https://github.com/Hadeel-13"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                >
-                                    <IconButton
-                                        color="inherit"
-                                        aria-label="add to shopping cart"
-                                    >
-                                        <GitHub />
-                                    </IconButton>
-                                </a>
-                            </Tooltip>
-                            <Tooltip title="My Email">
-                                <a
-                                    href="mailto:mira13ha@gmail.com"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                >
-                                    <IconButton
-                                        color="inherit"
-                                        aria-label="add to shopping cart"
-                                    >
-                                        <ForwardToInbox />
-                                    </IconButton>
-                                </a>
-                            </Tooltip>
+                                        <IconButton
+                                            color="inherit"
+                                            aria-label="add to shopping cart"
+                                        >
+                                            {_.icon}
+                                        </IconButton>
+                                    </a>
+                                </Tooltip>
+                            ))}
                         </div>
                     </div>
                 </Container>
