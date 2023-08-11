@@ -1,5 +1,10 @@
 import { Box, Container, IconButton, Tooltip } from "@mui/material";
-import { ForwardToInbox, GitHub, PhoneInTalk } from "@mui/icons-material";
+import {
+    ForwardToInbox,
+    GitHub,
+    PhoneInTalk,
+    LinkedIn,
+} from "@mui/icons-material";
 const titles = ["الشروط والأحكام", "سياسية الخصوصية", "اتصل بنا"];
 const socialIcons = [
     {
@@ -8,14 +13,19 @@ const socialIcons = [
         icon: <PhoneInTalk />,
     },
     {
+        title: "My Email",
+        href: "mailto:mira13ha@gmail.com",
+        icon: <ForwardToInbox />,
+    },
+    {
         title: "My GitHub",
         href: "https://github.com/Hadeel-13",
         icon: <GitHub />,
     },
     {
-        title: "My Email",
-        href: "mailto:mira13ha@gmail.com",
-        icon: <ForwardToInbox />,
+        title: "My LinkedIn",
+        href: "https://www.linkedin.com/in/hadeel-i-5560851ba/",
+        icon: <LinkedIn />,
     },
 ];
 export default function Footer() {
