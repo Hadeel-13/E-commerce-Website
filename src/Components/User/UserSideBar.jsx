@@ -208,7 +208,7 @@ export default function UserSideBar() {
             </Drawer>
             {/* )} */}
             {!auth && (
-                // <ThemeProvider theme={darkTheme}>
+                <ThemeProvider theme={darkTheme}>
                     <Box>
                         <Tooltip title="">
                             <IconButton
@@ -265,7 +265,7 @@ export default function UserSideBar() {
                             ))}
                         </Menu>
                     </Box>
-                // </ThemeProvider>
+                </ThemeProvider>
             )}
         </>
     );
