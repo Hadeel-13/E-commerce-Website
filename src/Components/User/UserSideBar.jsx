@@ -32,6 +32,13 @@ import {
     Menu,
     MenuItem,
 } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+const darkTheme = createTheme({
+    palette: {
+        mode: "dark",
+    },
+});
 const MenuNotLogin = [
     {
         title: "تسجيل الدخول",
@@ -167,7 +174,7 @@ export default function UserSideBar() {
                     </div>
                 ))}
             </List>
-            <FormGroup sx={{width:100}}>
+            <FormGroup sx={{ width: 100 }}>
                 <FormControlLabel
                     control={
                         <Switch
@@ -201,60 +208,64 @@ export default function UserSideBar() {
             </Drawer>
             {/* )} */}
             {!auth && (
-                <Box>
-                    <Tooltip title="">
-                        <IconButton
-                            onClick={handleClickMenuAvtar}
-                            size="small"
-                            color="inherit"
-                            aria-controls={open ? "account-menu" : undefined}
-                            aria-haspopup="true"
-                            aria-expanded={open ? "true" : undefined}
-                            sx={{ mr: 1 }}
+                // <ThemeProvider theme={darkTheme}>
+                    <Box>
+                        <Tooltip title="">
+                            <IconButton
+                                onClick={handleClickMenuAvtar}
+                                size="small"
+                                // color="inherit"
+                                aria-controls={
+                                    open ? "account-menu" : undefined
+                                }
+                                aria-haspopup="true"
+                                aria-expanded={open ? "true" : undefined}
+                                sx={{ mr: 1 }}
+                            >
+                                <AccountCircle sx={{ color: "whitesmoke" }} />
+                            </IconButton>
+                        </Tooltip>
+                        <Menu
+                            anchorEl={anchorElMenuAvtar}
+                            id="account-menu"
+                            open={Boolean(anchorElMenuAvtar)}
+                            onClose={handleCloseMenuAvtar}
+                            onClick={handleCloseMenuAvtar}
+                            transformOrigin={{
+                                horizontal: "right",
+                                vertical: "top",
+                            }}
+                            anchorOrigin={{
+                                horizontal: "right",
+                                vertical: "bottom",
+                            }}
                         >
-                            <AccountCircle sx={{ color: "whitesmoke" }} />
-                        </IconButton>
-                    </Tooltip>
-                    <Menu
-                        anchorEl={anchorElMenuAvtar}
-                        id="account-menu"
-                        open={Boolean(anchorElMenuAvtar)}
-                        onClose={handleCloseMenuAvtar}
-                        onClick={handleCloseMenuAvtar}
-                        transformOrigin={{
-                            horizontal: "right",
-                            vertical: "top",
-                        }}
-                        anchorOrigin={{
-                            horizontal: "right",
-                            vertical: "bottom",
-                        }}
-                    >
-                        {MenuNotLogin.map((setting, i) => (
-                            <Link key={i} to={setting.link}>
-                                <MenuItem
-                                    onClick={handleCloseMenuAvtar}
-                                    sx={{
-                                        ":hover": {
-                                            bgcolor: "#ffffff42",
-                                        },
-                                    }}
-                                >
-                                    <Typography
-                                        textAlign="center"
+                            {MenuNotLogin.map((setting, i) => (
+                                <Link key={i} to={setting.link}>
+                                    <MenuItem
+                                        onClick={handleCloseMenuAvtar}
                                         sx={{
-                                            color: "white",
+                                            ":hover": {
+                                                bgcolor: "#ffffff42",
+                                            },
                                         }}
                                     >
-                                        {setting.icon}
-                                        {"  "}
-                                        {setting.title}
-                                    </Typography>
-                                </MenuItem>
-                            </Link>
-                        ))}
-                    </Menu>
-                </Box>
+                                        <Typography
+                                            textAlign="center"
+                                            sx={{
+                                                color: "white",
+                                            }}
+                                        >
+                                            {setting.icon}
+                                            {"  "}
+                                            {setting.title}
+                                        </Typography>
+                                    </MenuItem>
+                                </Link>
+                            ))}
+                        </Menu>
+                    </Box>
+                // </ThemeProvider>
             )}
         </>
     );
